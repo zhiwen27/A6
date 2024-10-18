@@ -11,41 +11,37 @@ public class Test{
         else{
             canGo[currentX][currentY] = false;
             //  Go north
-            if (((currentY + 1) < col) && ((canGo[currentX][currentY + 1] == true))){
-                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
-                //System.err.println("Now at: (" + currentX + "," + (currentY + 1) + ").");
-                Maze(row, col, desX, desY, currentX, currentY + 1, canGo);
-            }
-            // Go south
-            else if (((currentY - 1) >= 0) && ((canGo[currentX][currentY - 1] == true))){
-                if ((currentY + 1) < col){
-                    canGo[currentX][currentY + 1] = false;    
-                }
-                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
-                //System.err.println("Now at: (" + currentX + "," + (currentY - 1) + ").");
-                Maze(row, col, desX, desY, currentX, currentY - 1, canGo);
-            }
-            // Go east
-            else if (((currentX + 1) < row) && (canGo[currentX + 1][currentY] == true)){
-                if (((currentY - 1) >= 0)){
-                    canGo[currentX][currentY - 1] = false;
-                }
-                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
-                //System.err.println("Now at: (" + (currentX + 1)+ "," + currentY + ").");
-                Maze(row, col, desX, desY,currentX + 1, currentY, canGo);
-            }
-            // Go west
-            else if (((currentX - 1) >= 0) && (canGo[currentX - 1][currentY] == true)){
-                if (((currentX + 1) < row)){
-                    canGo[currentX + 1][currentY] = false;
-                }
-                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
-                //System.err.println("Now at: (" + (currentX - 1)+ "," + currentY + ").");
+            if (((currentX - 1) >= 0) && (canGo[currentX - 1][currentY] == true)){
+                System.err.println("Now at: (" + (currentX - 1)+ "," + currentY + ").");
                 Maze(row, col, desX, desY, currentX - 1, currentY, canGo);
             }
+            // Go south
+            if (((currentX + 1) < row) && (canGo[currentX + 1][currentY] == true)){
+                if (((currentX - 1) >= 0)){
+                    canGo[currentX - 1][currentY] = false;
+                }
+                System.err.println("Now at: (" + (currentX + 1)+ "," + currentY + ").");
+                Maze(row, col, desX, desY,currentX + 1, currentY, canGo);
+            }
+            // Go east
+            if (((currentY + 1) < col) && ((canGo[currentX][currentY + 1] == true))){
+                if ((currentX + 1) < row){
+                    canGo[currentX + 1][currentY] = false;
+                }
+                System.err.println("Now at: (" + currentX + "," + (currentY + 1) + ").");
+                Maze(row, col, desX, desY, currentX, currentY + 1, canGo);
+            }
+            // Go west
+            if (((currentY - 1) >= 0) && ((canGo[currentX][currentY - 1] == true))){
+                if ((currentY - 1) >= 0){
+                    canGo[currentX][currentY - 1] = false;    
+                }
+                System.err.println("Now at: (" + currentX + "," + (currentY - 1) + ").");
+                Maze(row, col, desX, desY, currentX, currentY - 1, canGo);
+            }
             else{
-                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
-                System.err.println("Fail to find a way!");
+                //System.err.println("Fail to find a way!");
+                canGo[currentX][currentY] = true;
                 return;
             }
         }
