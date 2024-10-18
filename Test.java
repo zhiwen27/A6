@@ -12,8 +12,8 @@ public class Test{
             canGo[currentX][currentY] = false;
             //  Go north
             if (((currentY + 1) < col) && ((canGo[currentX][currentY + 1] == true))){
-                System.err.println("From: (" + (currentX)+ "," + currentY + ").");
-                System.err.println("Now at: (" + currentX + "," + (currentY + 1) + ").");
+                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
+                //System.err.println("Now at: (" + currentX + "," + (currentY + 1) + ").");
                 Maze(row, col, desX, desY, currentX, currentY + 1, canGo);
             }
             // Go south
@@ -21,8 +21,8 @@ public class Test{
                 if ((currentY + 1) < col){
                     canGo[currentX][currentY + 1] = false;    
                 }
-                System.err.println("From: (" + (currentX)+ "," + currentY + ").");
-                System.err.println("Now at: (" + currentX + "," + (currentY - 1) + ").");
+                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
+                //System.err.println("Now at: (" + currentX + "," + (currentY - 1) + ").");
                 Maze(row, col, desX, desY, currentX, currentY - 1, canGo);
             }
             // Go east
@@ -30,8 +30,8 @@ public class Test{
                 if (((currentY - 1) >= 0)){
                     canGo[currentX][currentY - 1] = false;
                 }
-                System.err.println("From: (" + (currentX)+ "," + currentY + ").");
-                System.err.println("Now at: (" + (currentX + 1)+ "," + currentY + ").");
+                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
+                //System.err.println("Now at: (" + (currentX + 1)+ "," + currentY + ").");
                 Maze(row, col, desX, desY,currentX + 1, currentY, canGo);
             }
             // Go west
@@ -39,8 +39,8 @@ public class Test{
                 if (((currentX + 1) < row)){
                     canGo[currentX + 1][currentY] = false;
                 }
-                System.err.println("From: (" + (currentX)+ "," + currentY + ").");
-                System.err.println("Now at: (" + (currentX - 1)+ "," + currentY + ").");
+                System.err.println("At: (" + (currentX)+ "," + currentY + ").");
+                //System.err.println("Now at: (" + (currentX - 1)+ "," + currentY + ").");
                 Maze(row, col, desX, desY, currentX - 1, currentY, canGo);
             }
             else{
@@ -75,7 +75,6 @@ public class Test{
             }
             System.err.println();
         }
-        System.err.println("Start at: ("  + startX + "," + startY + ").");
         Test.Maze(row, col, desX, desY, startX, startY, canGo);
 
     }
