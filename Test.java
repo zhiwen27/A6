@@ -3,8 +3,8 @@ public class Test{
         if (reach){
             return;
         }
-        if ((desX == currentX) && (desY == currentY)){
-            System.err.println("Arrive at destination.");
+        if ((currentX == desX) && (currentY == desY)){
+            System.err.println("Arrive at destination: (" + currentX + "," + currentY + ").");
             reach = true;
             return;
         }
@@ -43,9 +43,12 @@ public class Test{
                 System.err.println("Now at: (" + (currentX - 1)+ "," + currentY + ").");
                 Maze(row, col, desX, desY, currentX - 1, currentY, canGo, reach);
             }
-            else{
-                System.err.println("Failure!");
-            }
+            // else{
+            //     System.err.println("Fail to find a way!");
+            //     return;
+            // }
+            System.err.println("Fail to find a way!");
+            return;
         }
     }
     public static void main(String[] args) {
@@ -54,6 +57,7 @@ public class Test{
         int desY = 0;
         int startX = 0;
         int startY = 1;
+        System.err.println("Start at: ("  + startX + "," + startY + ").");
         Test.Maze(3, 3, desX, desY, startX, startY, canGo,false);
 
     }
